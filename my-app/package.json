@@ -1,7 +1,8 @@
 {
-  "name": "5YearsOfFashion",
+  "name": "5YearsOfFashion/my-app",
   "version": "0.1.0",
   "private": false,
+  "homepage": "https://olivia-casper.github.io/5YearsOfFashion/",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
