@@ -21,11 +21,6 @@
     font-family: Arial, sans-serif;
 }
 
-#main-nav ul li a:hover {
-    color: var(--babypink);
-    text-decoration: underline;
-}
-
 .nav-home a {
     color: white;
 }

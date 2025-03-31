@@ -1,10 +1,13 @@
 header {
     font-family: 'Times New Roman', Times, serif;
-    color: var(--babypink);
-    -webkit-text-stroke: 1px var(--darkpink);
     text-align: center;
     margin: 0 auto;
     font-size: larger;
+}
+
+header h1 {
+    color: var(--babypink);
+    -webkit-text-stroke: 1px var(--darkpink);
 }
 
 .header-home {
