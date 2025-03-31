@@ -1,5 +1,18 @@
 header {
-    background: lightpink;
+    font-family: 'Times New Roman', Times, serif;
+    color: var(--babypink);
+    -webkit-text-stroke: 1px var(--darkpink);
     text-align: center;
-    padding: 10px;
+    margin: 0 auto;
+    font-size: larger;
+}
+
+.header-home {
+    background: var(--dark-grey);
+    color: var(--babypink);
+}
+
+.header-default {
+    background: var(--light-grey);
+    color: var(--babypink);
 }

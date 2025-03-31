@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=YourFontHere&display=swap');
+
 #main-nav ul {
     display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
 }
 
 #main-nav li {
@@ -10,4 +16,27 @@
 
 #main-nav li a {
     text-decoration: none;
+    padding: 10px;
+    display: block;
+    font-family: Arial, sans-serif;
+}
+
+#main-nav ul li a:hover {
+    color: var(--babypink);
+    text-decoration: underline;
+}
+
+.nav-home a {
+    color: white;
+}
+
+.nav-default a {
+    color: var(--dark-grey);
+}
+
+@media (max-width: 768px) {
+    /* Hide navigation links by default */
+    #main-nav {
+        display: none;
+    }
 }
