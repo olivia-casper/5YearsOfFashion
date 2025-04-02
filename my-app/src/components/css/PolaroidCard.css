@@ -1,0 +1,39 @@
+.polaroid {
+  position: absolute;
+  background: var(--darkpink);
+  padding: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  width: 180px;
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.caption {
+  background: var(--babypink);
+  color: var(--white);
+  padding: 5px;
+}
+
+.caption p {
+  font-size: 1vw;
+  text-align: center;
+}
+
+.heart {
+  font-size: 1vw;
+  color: var(--white);
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.heart.liked {
+  color: var(--black);
+  font-size: 1.5vw;
+}
