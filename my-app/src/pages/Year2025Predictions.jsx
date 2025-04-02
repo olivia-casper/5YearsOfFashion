@@ -1,9 +1,10 @@
+import Pagination from "../components/Pagination";
 import "./css/Year2025Predictions.css";
 import "../components/css/styles.css";
 import { Link } from "react-router-dom";
 
 
-function Year2025() {
+function Year2025Predictions() {
   return (
     <div>
       {/* Fake Browser Bar 
@@ -77,30 +78,8 @@ function Year2025() {
         <p><i>Like your favorites!</i></p>
       </div>
 
-      {/* Contact Form */}
-      <section className="contact-form">
-        <h3>Have any comments or suggestions? Email us!</h3>
-
-        <form method="POST" id="form">
-          <input type="hidden" name="access_key" value="3f2bdbe4-ff60-4d3c-8806-eb6ba785e48a" />
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <textarea name="message" placeholder="Your Message" required></textarea>
-          <input type="checkbox" name="botcheck" style={{ display: "none" }} className="hidden" />
-          <button type="submit">Send</button>
-          <div id="result"></div>
-        </form>
-      </section>
-
       {/* Pagination */}
-      <div className="pagination">
-        <div className="prev">
-          <Link to="/Year2024">Previous</Link>
-        </div>
-        <div className="next">
-          <Link to="/">Next</Link>
-        </div>
-      </div>
+      <Pagination prevLink="/Year2024" nextLink="/" />
 
       {/* Footer Bar */}
       <div className="bottom-bar"></div>
@@ -108,4 +87,4 @@ function Year2025() {
   );
 }
 
-export default Year2025;
+export default Year2025Predictions;

@@ -1,0 +1,23 @@
+.center-section {
+    flex: 1.5;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    margin: 0 auto 20px;
+  }
+  
+  .dotted {
+    border: none;
+    border-top: 2px dotted var(--dark-grey);
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  .bottom-content img {
+    max-width: 250px;
+    width: 80%;
+  }
+  
