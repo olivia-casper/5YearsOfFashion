@@ -29,30 +29,6 @@ nav ul li a {
     text-align: center;
 }
 
-.pagination {
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 30px;
-    margin-top: auto;
-    bottom: 0;
-}
-
-.prev, .next {
-    background: var(--white);
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    color: var(--dark-grey);
-}
-
-.prev {
-    margin-left: 7px;
-}
-
-.next {
-    margin-right: 60px;
-}
 
 /* Page Layout */
 .predictions-container {

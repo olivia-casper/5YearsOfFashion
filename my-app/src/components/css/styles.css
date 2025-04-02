@@ -17,6 +17,10 @@ html, body, #root {
     height: 100%;
   }  
 
+  * {
+    box-sizing: border-box;
+  }
+
 body {
     font-family: Arial, sans-serif;
     background: var(--light-grey);
@@ -57,30 +61,6 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Pagination */
-.pagination {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    flex-wrap: wrap;
-}
-
-.pagination a {
-    color: var(--babypink);
-    text-decoration: none;
-}
-
-.prev, .next {
-    background: var(--white);
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    color: var(--dark-grey);
-    text-align: center;
-    width: 100%;
-    max-width: 150px;
-}
-
 /* Hamburger/Toggle Menu */
 .menu-toggle {
     display: none;
@@ -93,18 +73,6 @@ nav ul li a:hover {
     top: 40px;
     left: 20px;
     z-index: 2000;
-}
-
-@media (max-width: 900px) {
-    .pagination {
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .prev, .next {
-        width: 100%;
-        max-width: 120px;
-    }
 }
 
 /* Responsiveness */

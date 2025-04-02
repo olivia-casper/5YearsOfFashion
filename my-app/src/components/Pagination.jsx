@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./css/Pagination.css"; // optional
+import "./css/Pagination.css"; 
 
 function Pagination({ prevLink, nextLink }) {
   return (
