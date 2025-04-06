@@ -1,3 +1,4 @@
+import useFetchTrend from "../hooks/useFetchTrend";
 import YearFrame from "../components/YearFrame";
 import CenterContent from "../components/CenterContent";
 import Pagination from "../components/Pagination";
@@ -6,54 +7,56 @@ import "../components/css/years.css";
 import "../components/css/styles.css";
 
 function Year2020() {
+  const { trend, loading, error } = useFetchTrend(2020);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!trend) return <p>No data found.</p>;
+
+  const leftImages = trend.images.slice(0, 2);
+  const rightImages = trend.images.slice(2);
+
   return (
     <div data-year="2020">
-      {/* Main Section */}
       <section className="year-container">
-        <h1>2020 Fashion Trends</h1>
-
+        <h1>{trend.year} Fashion Trends</h1>
         <div className="year-content">
-          {/* Left Side */}
           <div className="side left">
-            <YearFrame
-              imgSrc={`${process.env.PUBLIC_URL}/images/prints.jpg`}
-              caption="Fun Prints"
-              alt="Fun Prints"
-            />
-            <YearFrame
-              imgSrc={`${process.env.PUBLIC_URL}/images/oversized.webp`}
-              caption="Oversized Garments"
-              alt="Oversized Garments"
-            />
+            {leftImages.map((img, i) => (
+              <YearFrame
+                key={i}
+                imgSrc={`${process.env.PUBLIC_URL}/images/${img.src}`}
+                caption={img.title}
+                alt={img.title}
+              />
+            ))}
           </div>
 
-          {/* Center Content */}
           <CenterContent
-            paragraphTop="The year 2020 redefined fashion as the world embraced comfort and 'dopamine dressing' due to the pandemic. Oversized garments became the new norm, but blazers and crop tops stayed relevant. Fun and bold prints also made a major comeback, bringing a playful touch to everyday outfits."
-            imgSrc={`${process.env.PUBLIC_URL}/images/2020graph5.png`}
-            imageAlt="2020 Graph"
+            paragraphTop={trend["top-description"]}
+            paragraphBottom={trend["bottom-text"]}
+            imgSrc={
+              trend["main-image"]
+                ? `${process.env.PUBLIC_URL}/images/${trend["main-image"]}`
+                : null
+            }
+            imageAlt={`${trend.year} Chart`}
           />
 
-          {/* Right Side */}
           <div className="side right">
-            <YearFrame
-              imgSrc={`${process.env.PUBLIC_URL}/images/blazer.jpg`}
-              caption="Blazers"
-              alt="Blazers"
-            />
-            <YearFrame
-              imgSrc={`${process.env.PUBLIC_URL}/images/croptops.jpg`}
-              caption="Crop Tops"
-              alt="Crop Tops"
-            />
+            {rightImages.map((img, i) => (
+              <YearFrame
+                key={i}
+                imgSrc={`${process.env.PUBLIC_URL}/images/${img.src}`}
+                caption={img.title}
+                alt={img.title}
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Pagination Component */}
       <Pagination prevLink="/" nextLink="/Year2021" />
-
-      {/* Bottom Bar */}
       <div className="bottom-bar"></div>
     </div>
   );

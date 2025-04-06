@@ -1,5 +1,6 @@
 import Pagination from "../components/Pagination";
 import PolaroidCard from "../components/PolaroidCard";
+import ContactForm from "../components/ContactForm";
 import "./css/Year2025Predictions.css";
 import "../components/css/styles.css";
 
@@ -47,6 +48,9 @@ function Year2025Predictions() {
       <div className="likefavs">
         <p><i>Like your favorites!</i></p>
       </div>
+    
+      {/* Contact Form */}
+      <ContactForm />
 
       {/* Pagination */}
       <Pagination prevLink="/Year2024" nextLink="/" />
