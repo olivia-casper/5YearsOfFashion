@@ -8,6 +8,21 @@
     font-size: smaller;
 }
 
+.nav-home {
+    padding-bottom: 10px;
+}
+.nav-home a {
+    color: white;
+}
+.nav-default {
+    padding-bottom: 10px;
+}
+
+.nav-default a {
+    color: var(--dark-grey);
+}
+
+
 .menu-toggle {
   display: none;
   font-size: 30px;
