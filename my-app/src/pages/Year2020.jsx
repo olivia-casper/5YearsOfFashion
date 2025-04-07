@@ -24,6 +24,8 @@ function Year2020() {
     fetchData();
   }, []);
 
+  if (!yearData) return <p> </p>;
+
   return (
     <div data-year="2020">
       <section className="year-container">
