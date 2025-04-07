@@ -24,7 +24,7 @@ function Year2022() {
     fetchTrends();
   }, []);
 
-  if (!yearData) return <p>Loading...</p>;
+  if (!yearData) return;
 
   return (
     <div data-year="2022">
