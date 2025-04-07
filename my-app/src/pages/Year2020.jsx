@@ -24,7 +24,7 @@ function Year2020() {
     fetchData();
   }, []);
 
-  if (!yearData) return <p>Loading 2020 trends...</p>;
+  if (!yearData) return <p>Loading...</p>;
 
   return (
     <div data-year="2020">
