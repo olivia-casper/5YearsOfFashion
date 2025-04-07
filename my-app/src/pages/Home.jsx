@@ -4,25 +4,6 @@ import "./css/Home.css";
 function Home() {
   return (
     <div>
-      {/* Fake Browser Bar 
-      <div className="top-bar"></div> */}
-
-      {/*Ignore Header ---
-      <header>
-        <h1 className="site-title">5 Years of Fashion Trends</h1>
-        <nav>
-          <button className="menu-toggle" aria-label="Toggle Navigation">&#9776;</button>
-          <ul className="nav-links">
-            <li><a href="/index.html" className="active">Home</a></li>
-            <li><a href="/2020">2020</a></li>
-            <li><a href="/2021">2021</a></li>
-            <li><a href="/2022">2022</a></li>
-            <li><a href="/2023">2023</a></li>
-            <li><a href="/2024">2024</a></li>
-            <li><a href="/2025">2025 Predictions</a></li>
-          </ul>
-        </nav> 
-      </header> */}
 
       {/* Hero Section */}
       <section className="hero">

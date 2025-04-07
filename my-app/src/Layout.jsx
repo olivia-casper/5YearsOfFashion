@@ -6,7 +6,7 @@ import "./index.css";
 
 function Layout() {
     const location = useLocation();
-    const isHome = location.pathname === "/" || location.pathname === "/5YearsOfFashion"; // Adjust based on your `basename`
+    const isHome = location.pathname === "/" || location.pathname === "/5YearsOfFashion"; 
 
     return (
         <>

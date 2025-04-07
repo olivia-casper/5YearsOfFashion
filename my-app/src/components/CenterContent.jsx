@@ -1,4 +1,3 @@
-// src/components/CenterContent.jsx
 import "./css/CenterContent.css";
 
 function CenterContent({ paragraphTop, paragraphBottom, imgSrc, imageAlt }) {

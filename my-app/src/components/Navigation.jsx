@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import "./css/Navigation.css"; // or adjust path if needed
+import "./css/Navigation.css"; 
 
 function Navigation({ isHome }) {
   const [navOpen, setNavOpen] = useState(false);
