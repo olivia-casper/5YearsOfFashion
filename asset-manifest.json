@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/5YearsOfFashion/static/css/main.23aa34e2.css",
-    "main.js": "/5YearsOfFashion/static/js/main.17312273.js",
+    "main.js": "/5YearsOfFashion/static/js/main.f0694a80.js",
     "index.html": "/5YearsOfFashion/index.html",
     "main.23aa34e2.css.map": "/5YearsOfFashion/static/css/main.23aa34e2.css.map",
-    "main.17312273.js.map": "/5YearsOfFashion/static/js/main.17312273.js.map"
+    "main.f0694a80.js.map": "/5YearsOfFashion/static/js/main.f0694a80.js.map"
   },
   "entrypoints": [
     "static/css/main.23aa34e2.css",
-    "static/js/main.17312273.js"
+    "static/js/main.f0694a80.js"
   ]
 }
