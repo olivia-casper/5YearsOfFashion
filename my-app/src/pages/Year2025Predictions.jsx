@@ -11,7 +11,7 @@ function Year2025Predictions() {
   const [newPrediction, setNewPrediction] = useState("");
   const [feedback, setFeedback] = useState("");
 
-  // Prediction Form 
+  // Load predictions on first render
   useEffect(() => {
     fetchPredictions();
   }, []);
@@ -117,37 +117,23 @@ function Year2025Predictions() {
         <div id="result">{feedback}</div>
       </section>
 
-      {/* Running List of Predictions */}
+      {/* Community Predictions List */}
       <section className="contact-form">
         <h3>Community Predictions</h3>
-        <div className="prediction-columns">
-        {Array.from({ length: Math.ceil(predictions.length / 10) }).map((_, colIndex) => (
-          <ul className="prediction-column" key={colIndex}>
-            {predictions
-              .slice(colIndex * 10, colIndex * 10 + 10)
-              .map((prediction, index) => (
-                <li key={colIndex * 10 + index}>
-                  {prediction}
-                  <button
-                    onClick={() => handleDelete(colIndex * 10 + index)}
-                    style={{
-                      marginLeft: "10px",
-                      color: "grey",
-                      cursor: "pointer",
-                      border: "none",
-                      background: "transparent",
-                      fontSize: "10px"
-                    }}
-                  >
-                    ✖
-                  </button>
-                </li>
-              ))}
-          </ul>
-        ))}
-        </div>
+        <ul className="prediction-columns">
+          {predictions.map((prediction, index) => (
+            <li key={index}>
+              {prediction}
+              <button
+                onClick={() => handleDelete(index)}
+                className="delete-btn"
+              >
+                ✖
+              </button>
+            </li>
+          ))}
+        </ul>
       </section>
-
 
       {/* Contact Form */}
       <ContactForm />

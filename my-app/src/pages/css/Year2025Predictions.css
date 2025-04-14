@@ -192,40 +192,43 @@ nav ul li a {
     font-size: 14px;
   }
   
-  .prediction-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 10px;
-    justify-content: center;
+.prediction-columns {
+    column-count: 3;
+    column-gap: 30px;
+    padding-left: 20px;
+    max-width: 900px;
     margin: 0 auto;
-    width: 100%;
-  }
-  
-.prediction-column {
-    list-style: none;
-    padding: 0;
-    justify-content: center;
 }
   
-.prediction-column li {
-    padding: 6px 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
+.prediction-columns li {
+    break-inside: avoid;
+    margin-bottom: 8px;
     font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
 }
-
+  
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: grey;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+  
 @media (max-width: 768px) {
     .prediction-columns {
-      grid-template-columns: repeat(2, 1fr);
+      column-count: 2;
     }
-  }
+}
   
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
     .prediction-columns {
-      grid-template-columns: 1fr;
+      column-count: 1;
     }
-  }
-  
+}
   
