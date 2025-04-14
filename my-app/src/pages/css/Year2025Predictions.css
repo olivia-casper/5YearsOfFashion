@@ -192,9 +192,17 @@ nav ul li a {
     font-size: 14px;
   }
 
-
-.community-predictions {
-    margin-top: 10px;
-    padding-top: 20px;
-}
+  .prediction-list {
+    column-count: auto;    
+    column-width: 300px;   
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .prediction-list li {
+    break-inside: avoid;    
+    padding: 8px 0;
+  }
   
