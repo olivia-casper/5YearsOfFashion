@@ -111,7 +111,7 @@ nav ul li a {
 
 /* Staggered Polaroid Positioning */
 .polaroid-1 { left: 12%; top: 5%; transform: rotate(-8deg); }
-.polaroid-2 { left: 40%; top: 10%; transform: rotate(6deg); }
+.polaroid-2 { left: 40%; top: 7%; transform: rotate(6deg); }
 .polaroid-3 { left: 70%; top: 15%; transform: rotate(-10deg); }
 .polaroid-4 { left: 30%; top: 55%; transform: rotate(7deg); }
 .polaroid-5 { left: 55%; top: 50%; transform: rotate(-5deg); }
@@ -123,7 +123,7 @@ nav ul li a {
     }
 
     .polaroid-1 { left: 12%; top: 5%; }
-    .polaroid-2 { left: 38%; top: 12%; }
+    .polaroid-2 { left: 40%; top: 12%; }
     .polaroid-3 { left: 68%; top: 13%; }
     .polaroid-4 { left: 18%; top: 50%; }
     .polaroid-5 { left: 55%; top: 60%; }
@@ -140,7 +140,7 @@ nav ul li a {
     }
 
     .polaroid-1 { left: 12%; top: 5%; }
-    .polaroid-2 { left: 36%; top: 7%; }
+    .polaroid-2 { left: 38%; top: 7%; }
     .polaroid-3 { left: 66%; top: 8%; }
     .polaroid-4 { left: 18%; top: 50%; }
     .polaroid-5 { left: 55%; top: 52%; }
@@ -167,9 +167,9 @@ nav ul li a {
 
     .polaroid-1 { left: 0%; top: 0%; }
     .polaroid-2 { left: 45%; top: 2%; }
-    .polaroid-3 { left: 55%; top: 28%; }
-    .polaroid-4 { left: 2%; top: 40%; }
-    .polaroid-5 { left: 51%; top: 55%; }
+    .polaroid-3 { left: 70%; top: 32%; }
+    .polaroid-4 { left: 2%; top: 34%; }
+    .polaroid-5 { left: 40%; top: 48%; }
 
     .polaroid {
         width: 120px;
