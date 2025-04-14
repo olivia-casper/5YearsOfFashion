@@ -11,7 +11,7 @@ function Year2025Predictions() {
   const [newPrediction, setNewPrediction] = useState("");
   const [feedback, setFeedback] = useState("");
 
-  // Fetch predictions on load
+  // Prediction Form 
   useEffect(() => {
     fetchPredictions();
   }, []);
@@ -25,7 +25,6 @@ function Year2025Predictions() {
     }
   };
 
-  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (newPrediction.trim().length < 2) {
@@ -39,7 +38,7 @@ function Year2025Predictions() {
       });
       setFeedback("Prediction added!");
       setNewPrediction("");
-      fetchPredictions(); // refresh list
+      fetchPredictions(); 
     } catch (err) {
       setFeedback("Error adding prediction.");
     }
@@ -127,7 +126,7 @@ function Year2025Predictions() {
               {prediction}
               <button
                 onClick={() => handleDelete(index)}
-                style={{ marginLeft: "10px", cursor: "pointer", border: "none", background: "transparent" }}
+                style={{ marginLeft: "10px", color:"grey", cursor: "pointer", border: "none", background: "transparent", fontSize: "10px" }}
               >
                 ✖
               </button>
