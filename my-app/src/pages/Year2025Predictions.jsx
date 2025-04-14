@@ -115,25 +115,25 @@ function Year2025Predictions() {
           <button type="submit">Submit</button>
         </form>
         <div id="result">{feedback}</div>
+        <div id="community-predictions">
+          <h3>Community Predictions</h3>
+          <ul>
+            {predictions.map((prediction, index) => (
+              <li key={index}>
+                {prediction}
+                <button
+                  onClick={() => handleDelete(index)}
+                  style={{ marginLeft: "10px", color:"grey", cursor: "pointer", border: "none", background: "transparent", fontSize: "10px" }}
+                >
+                  ✖
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       {/* Running List of Predictions */}
-      <section className="contact-form">
-        <h3>Community Predictions</h3>
-        <ul>
-          {predictions.map((prediction, index) => (
-            <li key={index}>
-              {prediction}
-              <button
-                onClick={() => handleDelete(index)}
-                style={{ marginLeft: "10px", color:"grey", cursor: "pointer", border: "none", background: "transparent", fontSize: "10px" }}
-              >
-                ✖
-              </button>
-            </li>
-          ))}
-        </ul>
-      </section>
 
 
       {/* Contact Form */}
