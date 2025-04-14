@@ -179,3 +179,16 @@ nav ul li a {
         margin-top: -40px;
     }
 }
+
+.contact-form ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: var(--dark-grey);
+    margin-top: 10px;
+  }
+  
+  .contact-form ul li {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  

@@ -1,10 +1,52 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Pagination from "../components/Pagination";
 import PolaroidCard from "../components/PolaroidCard";
-import ContactForm from "../components/ContactForm";
+import ContactForm from "../components/ContactForm"; 
 import "./css/Year2025Predictions.css";
 import "../components/css/styles.css";
 
 function Year2025Predictions() {
+  const [predictions, setPredictions] = useState([]);
+  const [newPrediction, setNewPrediction] = useState("");
+  const [feedback, setFeedback] = useState("");
+
+  // Fetch predictions on load
+  useEffect(() => {
+    fetchPredictions();
+  }, []);
+
+  const fetchPredictions = async () => {
+    try {
+      const res = await axios.get("https://fiveyearsoffashion-server.onrender.com/api/predictions");
+      setPredictions(res.data);
+    } catch (err) {
+      console.error("Error fetching predictions", err);
+    }
+  };
+
+  // Handle form submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (newPrediction.trim().length < 2) {
+      setFeedback("Prediction must be at least 2 characters.");
+      return;
+    }
+
+    try {
+      await axios.post("https://fiveyearsoffashion-server.onrender.com/api/predictions", {
+        text: newPrediction.trim(),
+      });
+      setFeedback("Prediction added!");
+      setNewPrediction("");
+      fetchPredictions(); // refresh list
+    } catch (err) {
+      setFeedback("Error adding prediction.");
+    }
+
+    setTimeout(() => setFeedback(""), 3000);
+  };
+
   return (
     <div>
       {/* Main 2025 Section */}
@@ -48,7 +90,33 @@ function Year2025Predictions() {
       <div className="likefavs">
         <p><i>Like your favorites!</i></p>
       </div>
-    
+
+      {/* Add Prediction Form */}
+      <section className="contact-form">
+        <h3>Add Your 2025 Fashion Prediction!</h3>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="e.g., Baggy Jeans"
+            value={newPrediction}
+            onChange={(e) => setNewPrediction(e.target.value)}
+            required
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <div id="result">{feedback}</div>
+      </section>
+
+      {/* Running List of Predictions */}
+      <section className="contact-form">
+        <h3>Community Predictions</h3>
+        <ul>
+          {predictions.map((prediction, index) => (
+            <li key={index}>{prediction}</li>
+          ))}
+        </ul>
+      </section>
+
       {/* Contact Form */}
       <ContactForm />
 
