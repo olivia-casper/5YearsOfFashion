@@ -11,7 +11,6 @@ function Year2025Predictions() {
   const [newPrediction, setNewPrediction] = useState("");
   const [feedback, setFeedback] = useState("");
 
-  // Load predictions on first render
   useEffect(() => {
     fetchPredictions();
   }, []);
