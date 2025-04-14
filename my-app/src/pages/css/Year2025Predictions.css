@@ -191,18 +191,41 @@ nav ul li a {
     margin-bottom: 5px;
     font-size: 14px;
   }
-
-  .prediction-list {
-    column-count: auto;    
-    column-width: 300px;   
-    max-width: 900px;
+  
+  .prediction-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+    justify-content: center;
     margin: 0 auto;
-    padding: 0;
-    list-style-type: none;
+    width: 100%;
   }
   
-  .prediction-list li {
-    break-inside: avoid;    
-    padding: 8px 0;
+.prediction-column {
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+  
+.prediction-column li {
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .prediction-columns {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
+  
+  @media (max-width: 480px) {
+    .prediction-columns {
+      grid-template-columns: 1fr;
+    }
+  }
+  
   

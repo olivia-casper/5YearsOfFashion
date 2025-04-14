@@ -120,19 +120,32 @@ function Year2025Predictions() {
       {/* Running List of Predictions */}
       <section className="contact-form">
         <h3>Community Predictions</h3>
-        <ul className="prediction-list">
-          {predictions.map((prediction, index) => (
-            <li key={index}>
-              {prediction}
-              <button
-                onClick={() => handleDelete(index)}
-                style={{ marginLeft: "10px", color:"grey", cursor: "pointer", border: "none", background: "transparent", fontSize: "10px" }}
-              >
-                ✖
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="prediction-columns">
+        {Array.from({ length: Math.ceil(predictions.length / 10) }).map((_, colIndex) => (
+          <ul className="prediction-column" key={colIndex}>
+            {predictions
+              .slice(colIndex * 10, colIndex * 10 + 10)
+              .map((prediction, index) => (
+                <li key={colIndex * 10 + index}>
+                  {prediction}
+                  <button
+                    onClick={() => handleDelete(colIndex * 10 + index)}
+                    style={{
+                      marginLeft: "10px",
+                      color: "grey",
+                      cursor: "pointer",
+                      border: "none",
+                      background: "transparent",
+                      fontSize: "10px"
+                    }}
+                  >
+                    ✖
+                  </button>
+                </li>
+              ))}
+          </ul>
+        ))}
+        </div>
       </section>
 
 
