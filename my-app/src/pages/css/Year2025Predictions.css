@@ -205,16 +205,15 @@ nav ul li a {
     margin-bottom: 8px;
     font-size: 14px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
 }
   
 .delete-btn {
-    background: transparent;
+    background: none !important;
     border: none;
-    color: grey;
-    font-size: 12px;
+    color: var(--dark-grey) !important;
+    font-size: 8px;
     cursor: pointer;
     padding: 0;
     line-height: 1;
