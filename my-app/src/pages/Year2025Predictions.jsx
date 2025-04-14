@@ -47,6 +47,17 @@ function Year2025Predictions() {
     setTimeout(() => setFeedback(""), 3000);
   };
 
+  const handleDelete = async (index) => {
+    try {
+      await axios.delete(
+        `https://fiveyearsoffashion-server.onrender.com/api/predictions/${index}`
+      );
+      fetchPredictions();
+    } catch (err) {
+      console.error("Error deleting prediction", err);
+    }
+  };
+
   return (
     <div>
       {/* Main 2025 Section */}
@@ -93,7 +104,7 @@ function Year2025Predictions() {
 
       {/* Add Prediction Form */}
       <section className="contact-form">
-        <h3>Add Your 2025 Fashion Prediction!</h3>
+        <h3>Have Another Fashion Prediction for 2025? Add It Here:</h3>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -112,10 +123,19 @@ function Year2025Predictions() {
         <h3>Community Predictions</h3>
         <ul>
           {predictions.map((prediction, index) => (
-            <li key={index}>{prediction}</li>
+            <li key={index}>
+              {prediction}
+              <button
+                onClick={() => handleDelete(index)}
+                style={{ marginLeft: "10px", cursor: "pointer", border: "none", background: "transparent" }}
+              >
+                ✖
+              </button>
+            </li>
           ))}
         </ul>
       </section>
+
 
       {/* Contact Form */}
       <ContactForm />
