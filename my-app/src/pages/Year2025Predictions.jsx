@@ -9,9 +9,11 @@ import AddPredictionForm from "../components/AddPredictionForm";
 
 function Year2025Predictions() {
   const [predictions, setPredictions] = useState([]);
-  const [newPrediction, setNewPrediction] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [editIndex, setEditIndex] = useState(null);
+  const [editForm, setEditForm] = useState({ name: "", image: "", description: "" });
 
+  // Load predictions from server
   useEffect(() => {
     fetchPredictions();
   }, []);
@@ -25,31 +27,12 @@ function Year2025Predictions() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (newPrediction.trim().length < 2) {
-      setFeedback("Prediction must be at least 2 characters.");
-      return;
-    }
-
-    try {
-      await axios.post("https://fiveyearsoffashion-server.onrender.com/api/predictions", {
-        text: newPrediction.trim(),
-      });
-      setFeedback("Prediction added!");
-      setNewPrediction("");
-      fetchPredictions(); 
-    } catch (err) {
-      setFeedback("Error adding prediction.");
-    }
-
-    setTimeout(() => setFeedback(""), 3000);
-  };
-
+  // Add new prediction (passed from AddPredictionForm)
   const handleAdd = (newItem) => {
     setPredictions((prev) => [...prev, newItem]);
   };
   
+  // Delete prediction by index
   const handleDelete = async (index) => {
     try {
       await axios.delete(
@@ -61,12 +44,37 @@ function Year2025Predictions() {
     }
   };
 
+  // Load prediction into edit form
+  const handleEdit = (index) => {
+    const prediction = predictions[index];
+    setEditForm(prediction);
+    setEditIndex(index);
+  };
+
+  // Handle form input for edit
+  const handleEditChange = (e) => {
+    setEditForm({ ...editForm, [e.target.name]: e.target.value });
+  };  
+
+  // Submit edited prediction
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put(`https://fiveyearsoffashion-server.onrender.com/api/predictions/${editIndex}`, editForm);
+      setFeedback("Prediction updated!");
+      setEditIndex(null);
+      setEditForm({ name: "", image: "", description: "" });
+      fetchPredictions();
+    } catch (err) {
+      setFeedback("Failed to update prediction.");
+    }
+  };  
+
   return (
     <div>
-      {/* Main 2025 Section */}
+      {/* Static 2025 Trends Section */}
       <section className="predictions-container">
         <h1>2025 Fashion Predictions</h1>
-
         <div className="polaroid-wrapper">
           <PolaroidCard
             imgSrc={`${process.env.PUBLIC_URL}/images/loudluxury.png`}
@@ -105,8 +113,10 @@ function Year2025Predictions() {
         <p><i>Like your favorites!</i></p>
       </div>
 
+      {/* Add New Prediction Form */}
       <AddPredictionForm onAdd={handleAdd} />
 
+      {/* Community Predictions Display */}
       <section className="contact-form">
         <h3>Community Predictions</h3>
         <div className="prediction-columns">
@@ -115,19 +125,46 @@ function Year2025Predictions() {
               <img src={item.image} alt={item.name} />
               <h4>{item.name}</h4>
               <p>{item.description}</p>
+              <button onClick={() => handleEdit(index)} className="edit-btn">✎</button>
               <button onClick={() => handleDelete(index)} className="delete-btn">✖</button>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Contact Form */}
+      {/* Edit Form */}
+      {editIndex !== null && (
+        <section className="contact-form">
+          <h3>Edit Your Prediction</h3>
+          <form onSubmit={handleUpdate}>
+            <input
+              type="text"
+              name="name"
+              value={editForm.name}
+              onChange={handleEditChange}
+              required
+            />
+            <input
+              type="url"
+              name="image"
+              value={editForm.image}
+              onChange={handleEditChange}
+              required
+            />
+            <textarea
+              name="description"
+              value={editForm.description}
+              onChange={handleEditChange}
+              required
+            />
+            <button type="submit">Update</button>
+          </form>
+        </section>
+      )}
+
+      {/* Contact and Navigation */}
       <ContactForm />
-
-      {/* Pagination */}
       <Pagination prevLink="/Year2024" nextLink="/" />
-
-      {/* Footer Bar */}
       <div className="bottom-bar"></div>
     </div>
   );

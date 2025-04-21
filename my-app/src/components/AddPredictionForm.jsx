@@ -21,7 +21,7 @@ function AddPredictionForm({ onAdd }) {
     try {
       const res = await axios.post("https://fiveyearsoffashion-server.onrender.com/api/predictions", form);
       setMessage("Prediction added!");
-      onAdd(res.data.prediction); // Update state in parent
+      onAdd(res.data.prediction);
       setForm({ name: "", image: "", description: "" });
     } catch (err) {
       setMessage("Failed to submit. Make sure all fields are valid.");
