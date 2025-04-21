@@ -30,6 +30,8 @@ function Year2025Predictions() {
   // Add new prediction (passed from AddPredictionForm)
   const handleAdd = (newItem) => {
     setPredictions((prev) => [...prev, newItem]);
+    setFeedback("Prediction added!");
+    setTimeout(() => setFeedback(""), 3000);
   };
   
   // Delete prediction by index
@@ -38,9 +40,11 @@ function Year2025Predictions() {
       await axios.delete(
         `https://fiveyearsoffashion-server.onrender.com/api/predictions/${index}`
       );
+      setFeedback("Prediction deleted!");
       fetchPredictions();
     } catch (err) {
       console.error("Error deleting prediction", err);
+      setFeedback("Failed to delete prediction.");
     }
   };
 
