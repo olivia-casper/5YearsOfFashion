@@ -20,7 +20,6 @@ function AddPredictionForm({ onAdd }) {
 
     try {
       const res = await axios.post("https://fiveyearsoffashion-server.onrender.com/api/predictions", form);
-      setMessage("Prediction added!");
       onAdd(res.data.prediction);
       setForm({ name: "", image: "", description: "" });
     } catch (err) {
@@ -58,7 +57,6 @@ function AddPredictionForm({ onAdd }) {
           required
         />
         <button type="submit">Submit</button>
-        <div id="result">{message}</div>
       </form>
     </section>
   );
