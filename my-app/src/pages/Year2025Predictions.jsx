@@ -118,7 +118,7 @@ function Year2025Predictions() {
       {/* Feedback Message */}
       {feedback && (
         <div className="feedback-message">
-          {feedback}
+          <em>{feedback}</em>
         </div>
       )}
 
@@ -169,7 +169,7 @@ function Year2025Predictions() {
           </form>
         </section>
       )}
-      
+
       {/* Contact and Navigation */}
       <ContactForm />
       <Pagination prevLink="/Year2024" nextLink="/" />
