@@ -13,7 +13,6 @@ function Year2025Predictions() {
   const [editIndex, setEditIndex] = useState(null);
   const [editForm, setEditForm] = useState({ name: "", image: "", description: "" });
 
-  // Load predictions from server
   useEffect(() => {
     fetchPredictions();
   }, []);
@@ -27,40 +26,34 @@ function Year2025Predictions() {
     }
   };
 
-  // Add new prediction (passed from AddPredictionForm)
   const handleAdd = (newItem) => {
     setPredictions((prev) => [...prev, newItem]);
     setFeedback("Prediction added!");
     setTimeout(() => setFeedback(""), 3000);
   };
   
-  // Delete prediction by index
   const handleDelete = async (index) => {
     try {
-      await axios.delete(
-        `https://fiveyearsoffashion-server.onrender.com/api/predictions/${index}`
-      );
-      setFeedback("Prediction deleted!");
+      await axios.delete(`https://fiveyearsoffashion-server.onrender.com/api/predictions/${index}`);
       fetchPredictions();
+      setFeedback("Prediction deleted!");
     } catch (err) {
       console.error("Error deleting prediction", err);
       setFeedback("Failed to delete prediction.");
     }
+    setTimeout(() => setFeedback(""), 3000);
   };
 
-  // Load prediction into edit form
   const handleEdit = (index) => {
     const prediction = predictions[index];
     setEditForm(prediction);
     setEditIndex(index);
   };
 
-  // Handle form input for edit
   const handleEditChange = (e) => {
     setEditForm({ ...editForm, [e.target.name]: e.target.value });
   };  
 
-  // Submit edited prediction
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
@@ -73,7 +66,8 @@ function Year2025Predictions() {
       console.error("Update failed:", err);
       setFeedback("Failed to update prediction.");
     }
-  };  
+    setTimeout(() => setFeedback(""), 3000);
+  };
 
   return (
     <div>
@@ -120,6 +114,13 @@ function Year2025Predictions() {
 
       {/* Add New Prediction Form */}
       <AddPredictionForm onAdd={handleAdd} />
+
+      {/* Feedback Message */}
+      {feedback && (
+        <div className="feedback-message">
+          {feedback}
+        </div>
+      )}
 
       {/* Community Predictions Display */}
       <section className="contact-form">
@@ -168,7 +169,7 @@ function Year2025Predictions() {
           </form>
         </section>
       )}
-
+      
       {/* Contact and Navigation */}
       <ContactForm />
       <Pagination prevLink="/Year2024" nextLink="/" />
