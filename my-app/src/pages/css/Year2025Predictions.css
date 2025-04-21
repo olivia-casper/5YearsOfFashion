@@ -225,12 +225,22 @@ nav ul li a {
     color: var(--dark-grey);
   }
   
-  .delete-btn {
+  .delete-btn, .edit-btn {
     background: none;
     border: none;
     color: var(--dark-grey);
-    font-size: 14px;
+    font-size: 10px;
     cursor: pointer;
     margin-top: 5px;
   }
+
+
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  
   

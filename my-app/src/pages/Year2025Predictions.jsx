@@ -66,6 +66,7 @@ function Year2025Predictions() {
       setEditForm({ name: "", image: "", description: "" });
       fetchPredictions();
     } catch (err) {
+      console.error("Update failed:", err);
       setFeedback("Failed to update prediction.");
     }
   };  
@@ -125,8 +126,10 @@ function Year2025Predictions() {
               <img src={item.image} alt={item.name} />
               <h4>{item.name}</h4>
               <p>{item.description}</p>
-              <button onClick={() => handleEdit(index)} className="edit-btn">✎</button>
-              <button onClick={() => handleDelete(index)} className="delete-btn">✖</button>
+              <div className="button-group">
+                <button onClick={() => handleEdit(index)} className="edit-btn">✎</button>
+                <button onClick={() => handleDelete(index)} className="delete-btn">✖</button>
+              </div>
             </div>
           ))}
         </div>
