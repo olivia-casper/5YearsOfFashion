@@ -3,44 +3,62 @@ import axios from "axios";
 import "./css/ContactForm.css";
 
 function AddPredictionForm({ onAdd }) {
-  const [text, setText] = useState("");
-  const [result, setResult] = useState("");
+  const [form, setForm] = useState({ name: "", image: "", description: "" });
+  const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (text.trim().length < 2) {
-      setResult("Prediction must be at least 2 characters.");
+
+    if (!form.name || !form.image || !form.description) {
+      setMessage("All fields are required.");
       return;
     }
 
     try {
-      const res = await axios.post("https://fiveyearsoffashion-server.onrender.com/api/predictions", { text });
-      if (res.status === 201) {
-        onAdd(text);
-        setText("");
-        setResult("Prediction added!");
-      }
+      const res = await axios.post("https://fiveyearsoffashion-server.onrender.com/api/predictions", form);
+      setMessage("Prediction added!");
+      onAdd(res.data.prediction); // Update state in parent
+      setForm({ name: "", image: "", description: "" });
     } catch (err) {
-      console.error(err);
-      setResult("Error adding prediction.");
+      setMessage("Failed to submit. Make sure all fields are valid.");
     }
 
-    setTimeout(() => setResult(""), 3000);
+    setTimeout(() => setMessage(""), 3000);
   };
 
   return (
     <section className="contact-form">
-      <h3>Have Another Fashion Prediction for 2025? Add It Here:</h3>
+      <h3>Submit Your 2025 Fashion Prediction</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          value={text}
-          placeholder="e.g. Baggy Jeans"
-          onChange={(e) => setText(e.target.value)}
+          name="name"
+          placeholder="Trend Name (e.g. Baggy Jeans)"
+          value={form.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="url"
+          name="image"
+          placeholder="Image URL"
+          value={form.image}
+          onChange={handleChange}
+          required
+        />
+        <textarea
+          name="description"
+          placeholder="Short Description"
+          value={form.description}
+          onChange={handleChange}
           required
         />
         <button type="submit">Submit</button>
-        <div id="result">{result}</div>
+        <div id="result">{message}</div>
       </form>
     </section>
   );

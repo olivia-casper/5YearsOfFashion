@@ -5,6 +5,7 @@ import PolaroidCard from "../components/PolaroidCard";
 import ContactForm from "../components/ContactForm"; 
 import "./css/Year2025Predictions.css";
 import "../components/css/styles.css";
+import AddPredictionForm from "../components/AddPredictionForm";
 
 function Year2025Predictions() {
   const [predictions, setPredictions] = useState([]);
@@ -45,6 +46,10 @@ function Year2025Predictions() {
     setTimeout(() => setFeedback(""), 3000);
   };
 
+  const handleAdd = (newItem) => {
+    setPredictions((prev) => [...prev, newItem]);
+  };
+  
   const handleDelete = async (index) => {
     try {
       await axios.delete(
@@ -100,38 +105,20 @@ function Year2025Predictions() {
         <p><i>Like your favorites!</i></p>
       </div>
 
-      {/* Add Prediction Form */}
-      <section className="contact-form">
-        <h3>Have Another Fashion Prediction for 2025? Add It Here:</h3>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="e.g., Baggy Jeans"
-            value={newPrediction}
-            onChange={(e) => setNewPrediction(e.target.value)}
-            required
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <div id="result">{feedback}</div>
-      </section>
+      <AddPredictionForm onAdd={handleAdd} />
 
-      {/* Community Predictions List */}
       <section className="contact-form">
         <h3>Community Predictions</h3>
-        <ul className="prediction-columns">
-          {predictions.map((prediction, index) => (
-            <li key={index}>
-              {prediction}
-              <button
-                onClick={() => handleDelete(index)}
-                className="delete-btn"
-              >
-                ✖
-              </button>
-            </li>
+        <div className="prediction-columns">
+          {predictions.map((item, index) => (
+            <div className="prediction-card" key={index}>
+              <img src={item.image} alt={item.name} />
+              <h4>{item.name}</h4>
+              <p>{item.description}</p>
+              <button onClick={() => handleDelete(index)} className="delete-btn">✖</button>
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
 
       {/* Contact Form */}

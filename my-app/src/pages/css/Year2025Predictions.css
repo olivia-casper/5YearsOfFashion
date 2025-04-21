@@ -193,42 +193,44 @@ nav ul li a {
     font-size: 14px;
   }
   
-.prediction-columns {
-    column-count: 3;
-    column-gap: 30px;
-    padding-left: 20px;
+  .prediction-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
     max-width: 900px;
     margin: 0 auto;
-}
+  }
   
-.prediction-columns li {
-    break-inside: avoid;
-    margin-bottom: 8px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
+  .prediction-card {
+    background-color:rgba(253, 251, 253, 0.384);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    text-align: center;
+  }
   
-.delete-btn {
-    background: none !important;
+  .prediction-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+  
+  .prediction-card h4 {
+    margin: 10px 0 5px;
+  }
+  
+  .prediction-card p {
+    font-size: 13px;
+    color: var(--dark-grey);
+  }
+  
+  .delete-btn {
+    background: none;
     border: none;
-    color: var(--dark-grey) !important;
-    font-size: 8px;
+    color: var(--dark-grey);
+    font-size: 14px;
     cursor: pointer;
-    padding: 0;
-    line-height: 1;
-}
-  
-@media (max-width: 768px) {
-    .prediction-columns {
-      column-count: 2;
-    }
-}
-  
-@media (max-width: 480px) {
-    .prediction-columns {
-      column-count: 1;
-    }
-}
+    margin-top: 5px;
+  }
   
