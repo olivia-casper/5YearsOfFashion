@@ -12,6 +12,21 @@ function AddPredictionForm({ onAdd }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (form.name.trim().length < 2) {
+      alert("Name must be at least 2 characters.");
+      return;
+    }
+  
+    if (!form.image.trim().startsWith("http")) {
+      alert("Please enter a valid image URL.");
+      return;
+    }
+  
+    if (form.description.trim().length < 5) {
+      alert("Description must be at least 5 characters.");
+      return;
+    }
+
     try {
       const res = await axios.post(
         "https://fiveyearsoffashion-server.onrender.com/api/predictions",
