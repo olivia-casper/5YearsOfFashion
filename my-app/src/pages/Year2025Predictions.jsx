@@ -34,7 +34,8 @@ function Year2025Predictions() {
   
   const handleDelete = async (index) => {
     try {
-      await axios.delete(`https://fiveyearsoffashion-server.onrender.com/api/predictions/${index}`);
+      const _id = predictions[index]._id;
+      await axios.delete(`https://fiveyearsoffashion-server.onrender.com/api/predictions/${_id}`);
       fetchPredictions();
       setFeedback("Prediction deleted!");
     } catch (err) {
@@ -43,6 +44,7 @@ function Year2025Predictions() {
     }
     setTimeout(() => setFeedback(""), 3000);
   };
+  
 
   const handleEdit = (index) => {
     const prediction = predictions[index];
@@ -57,17 +59,22 @@ function Year2025Predictions() {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://fiveyearsoffashion-server.onrender.com/api/predictions/${editIndex}`, editForm);
+      await axios.put(`https://fiveyearsoffashion-server.onrender.com/api/predictions/${editIndex}`, {
+        name: editForm.name,
+        image: editForm.image,
+        description: editForm.description,
+      });
       setFeedback("Prediction updated!");
-      setEditIndex(null);
-      setEditForm({ name: "", image: "", description: "" });
-      fetchPredictions();
+      setEditIndex(null); // clear the form
+      setEditForm({ name: "", image: "", description: "" }); // clear inputs
+      fetchPredictions(); // reload predictions
     } catch (err) {
       console.error("Update failed:", err);
       setFeedback("Failed to update prediction.");
     }
     setTimeout(() => setFeedback(""), 3000);
   };
+  
 
   return (
     <div>
