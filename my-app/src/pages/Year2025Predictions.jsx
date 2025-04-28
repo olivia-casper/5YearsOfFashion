@@ -47,8 +47,8 @@ function Year2025Predictions() {
   const handleEdit = (index) => {
     const prediction = predictions[index];
     setEditForm(prediction);
-    setEditIndex(index);
-  };
+    setEditIndex(prediction._id);
+  };  
 
   const handleEditChange = (e) => {
     setEditForm({ ...editForm, [e.target.name]: e.target.value });
